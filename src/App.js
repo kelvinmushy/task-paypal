@@ -6,7 +6,7 @@ import { BrowserRouter, Routes, Route} from "react-router-dom";
 import CreateTaskForm from './Components/Task/CreateTaskForm';
 import PaymentComponents from './Components/Payments/PaymentComponents';
 import TaskComponent from './Components/Task/TaskComponent';
-
+import PaymentHistory from './Components/Payments/PaymentHistory';
 function App() {
   return (
     <div>
@@ -17,6 +17,7 @@ function App() {
         <Route path="/new/task" element={<CreateTaskForm/>}/>
         <Route path="/all-task" element={<TaskComponent/>}/>
         <Route path="/paypal/payment/method/:id" element={<PaymentComponents/>}/>
+        <Route path="/payment/history" element={<PaymentHistory/>}/>
         
        </Routes>
    </BrowserRouter>

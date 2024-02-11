@@ -17,7 +17,7 @@ const NavComponent = () => {
              >
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/all-task">Task</Nav.Link>
-            <Nav.Link href="#action2">Payment History</Nav.Link>
+            <Nav.Link href="/payment/history">Payment History</Nav.Link>
 
           </Nav>
          
