@@ -2,7 +2,7 @@ import { useState,useEffect }  from "react";
 import http from "../Https/http";
 import Table from 'react-bootstrap/Table';
 import Card from 'react-bootstrap/Card';
-import { CardBody, Col ,Button,Row, CardHeader} from 'react-bootstrap';
+import {Form,InputGroup, CardBody, Col ,Button,Row, CardHeader} from 'react-bootstrap';
 import { Outlet, Link } from "react-router-dom";
 import NavComponent from "../Layouts/NavComponent";
 
@@ -10,6 +10,7 @@ const TaskComponent = () => {
 
 
   const [dataTask,setTasks]=useState([]);
+  const [search, setSearch] = useState('');
   useEffect(()=>{
     fetchAllTask();
    },[]);
@@ -52,6 +53,16 @@ const TaskComponent = () => {
                   </Row>
                  </CardHeader>
           <CardBody>
+          <Form>
+          <InputGroup className='my-3'>
+
+            {/* onChange for search */}
+            <Form.Control
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder='Search Task'
+            />
+          </InputGroup>
+        </Form>
      <Table responsive>
      <thead>
       <tr>
@@ -63,26 +74,26 @@ const TaskComponent = () => {
        <th >Created On</th>
    </tr>
     </thead>
-     <tbody>
-  {dataTask.length>0?
-
-  dataTask.map((task,index)=>
-  <tr key={task.id}>
-   <td>{index+1}</td>
-  <td>{task.name}</td>
-  <td>{task.price}</td>
-  {task.status==1?<td className="text-success"><b>Completed</b></td>:
-   <td className="text-danger"><b>InComplete</b></td>
-  }
+   <tbody>
+            {dataTask
+              .filter((item) => {
+                return search.toLowerCase() === ''
+                  ? item
+                  : item.name.toLowerCase().includes(search);
+              })
+              .map((item, index) => (
+                <tr key={index}>
+                 <td>{index+1}</td>
+                 <td>{item.name}</td>
+                <td>{item.price}</td>
+                 {item.status==1?<td className="text-success"><b>Completed</b></td>:
+                 <td className="text-danger"><b>InComplete</b></td>
+                   }
  
-  <td>June,2024</td>
-
-</tr>
-)
-  : <tr><center><span className="text-danger"> No Data</span></center></tr>
-     
- }
- </tbody>
+                  <td>June,2024</td>
+                </tr>
+              ))}
+          </tbody>
 </Table>
 </CardBody>
 </Card> 
