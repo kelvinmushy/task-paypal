@@ -1,24 +1,27 @@
-import logo from './logo.svg';
+
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import HomeComponent from './Components/HomeComponent';
+import { BrowserRouter, Routes, Route} from "react-router-dom";
+import CreateTaskForm from './Components/Task/CreateTaskForm';
+import PaymentComponents from './Components/Payments/PaymentComponents';
+import TaskComponent from './Components/Task/TaskComponent';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      
+       <BrowserRouter>
+       <Routes>
+       <Route path="/" element={<HomeComponent />}/>
+        <Route path="/new/task" element={<CreateTaskForm/>}/>
+        <Route path="/all-task" element={<TaskComponent/>}/>
+        <Route path="/paypal/payment/method/:id" element={<PaymentComponents/>}/>
+        
+       </Routes>
+   </BrowserRouter>
     </div>
+   
   );
 }
 
