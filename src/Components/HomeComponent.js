@@ -5,11 +5,13 @@ import Card from 'react-bootstrap/Card';
 import { CardBody, Col ,Button,Row, CardHeader, Container} from 'react-bootstrap';
 import { Outlet, Link } from "react-router-dom";
 import NavComponent from "./Layouts/NavComponent";
+import {Form,InputGroup} from 'react-bootstrap';
 
 const HomeComponent = () => {
 
 
   const [dataTask,setTasks]=useState([]);
+  const [search, setSearch] = useState('');
   useEffect(()=>{
     fetchAllTask();
    },[]);
@@ -29,7 +31,17 @@ const HomeComponent = () => {
     <div className='TaskContent'>
     
     <div className="container-fluid">
-    <Row className="RowTask">
+    <Form>
+          <InputGroup className='my-3'>
+
+            {/* onChange for search */}
+            <Form.Control
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder='Search Task'
+            />
+          </InputGroup>
+        </Form>
+    {/* <Row className="RowTask">
     {dataTask.length>0?
 
 dataTask.map((task,index)=>
@@ -55,7 +67,34 @@ dataTask.map((task,index)=>
      </Card> 
     </Col></Row>}
               
- </Row>
+ </Row> */}
+          <Row className="RowTask">
+
+
+          {dataTask
+              .filter((item) => {
+                return search.toLowerCase() === ''
+                  ? item
+                  : item.name.toLowerCase().includes(search);
+              })
+              .map((item, index) => (
+                <Col md={4} className=" ColTask">
+              <Card className="HomeTask shadow-lg p-3 mb-5 bg-white">
+               <CardBody >
+               <h5 className="card-title">{item.name}</h5>
+               <p className="card-text"><span>Price</span> ${item.price} 
+
+                 {item.status==1?<span className="text-success">  <b>Completed</b></span>:
+                <span className="text-danger"> <b>InCompleted</b></span>
+                }
+      
+               </p>
+             </CardBody>
+            </Card>  
+              </Col>
+               ))}
+          </Row>
+         
    </div>
    </div>
    </div>
