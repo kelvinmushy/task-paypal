@@ -12,16 +12,18 @@ const PaymentComponents= () => {
     const [inputs,setInputs]=useState({});
     const {id}=useParams();   
   
-
+    const amount=inputs.price;
     useEffect(()=>{
       fetchTask();
     },[]);
     
     const fetchTask=()=>{
+
       http.get('/show/'+id).then((res)=>{
         setInputs({
           name:res.data.data.name,
-          price:res.data.data.price
+          price:res.data.data.price,
+          id:res.data.data.id
         });
         
       });
@@ -52,14 +54,17 @@ const PaymentComponents= () => {
                <Card className='TaskContent'>
                  <CardHeader className="CardCenter"><h5>{inputs.name}</h5></CardHeader>
                  <CardBody>
-                 <h5 ><span className="text-warning" >This Amount Will Be Reducted From Your Balance</span>:{inputs.price}</h5>
+                 <h5 ><span className="text-warning" >This Amount Will Be Reducted From Your Balance</span>:${inputs.price}</h5>
                  </CardBody>
                  <CardFooter>
+                  
                  <PayPalScriptProvider options={initialOptions}>
-                 <PaypalCheckoutButton  amount={inputs.price}
-                 task_id={inputs.id}
+            
+                 <PaypalCheckoutButton  amount={amount}
+              
                  />
                  </PayPalScriptProvider>
+
                  </CardFooter>
                </Card>
              

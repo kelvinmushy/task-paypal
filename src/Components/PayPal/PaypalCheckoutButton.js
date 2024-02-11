@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
-// import './Checkout.css';
+import http from "../Https/http";
 import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
-
-const PaypalCheckoutButton = (props) => {
+import {useNavigate} from "react-router-dom";
+const PaypalCheckoutButton = props => {
 
     const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
     
     const [currency, setCurrency] = useState(options.currency);
-   
-
-    console.log(props.amount);
+    const vavigate=useNavigate();
     const onCurrencyChange = ({ target: { value } }) => {
         setCurrency(value);
 
@@ -20,14 +18,14 @@ const PaypalCheckoutButton = (props) => {
                 currency: value,
             },
         });
-    }
+       }
 
     const onCreateOrder = (data,actions) => {
         return actions.order.create({
             purchase_units: [
                 {
                     amount: {
-                        value:props.amount,
+                        value:2,
                     },
                 },
             ],
@@ -38,10 +36,19 @@ const PaypalCheckoutButton = (props) => {
         return actions.order.capture().then((details) => {
             const name = details.payer.name.given_name;
             alert(`Transaction completed by ${name}`);
+
+            http.get('/update/status').then((res)=>{
+
+                vavigate('/');
+
+              });
+
         });
     }
   
    
+   
+
     return (
         <div className="checkout">
             {isPending ? <p>LOADING...</p> : (
