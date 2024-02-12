@@ -46,11 +46,11 @@ const NewTaskForm = () => {
                 <Form>
               <Form.Group className="mb-3" >
             <Form.Label>Task Name</Form.Label>
-            <Form.Control type="text"  name="name"  value={inputs.name || ''}  onChange={handleChange}/>
+            <Form.Control type="text"  name="name"  equired value={inputs.name || ''}  onChange={handleChange}/>
              </Form.Group>
             <Form.Group className="mb-3">
             <Form.Label>Price</Form.Label>
-            <Form.Control type="text" name="price"  value={inputs.price || ''}  onChange={handleChange}/>
+            <Form.Control type="number" name="price"  min="0" required value={inputs.price || ''}  onChange={handleChange}/>
             </Form.Group>
             <Button variant="primary" 
             onClick={submitForm}>

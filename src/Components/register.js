@@ -12,7 +12,7 @@ export default function Register() {
     const submitForm = () =>{
         // api call
         http.post('/register',{email:email,password:password,name:name}).then((res)=>{
-            navigate('/login')
+            navigate('/')
         })
     }
 

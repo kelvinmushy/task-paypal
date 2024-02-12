@@ -21,8 +21,7 @@ const TaskComponent = () => {
      http.get('/list').then(res=>{
       setTasks(res.data);
       console.log(res.data);
-
-     })
+     }).catch((error) => console.log(error));
    }
 
   return (
@@ -92,7 +91,7 @@ const TaskComponent = () => {
                  <td className="text-danger"><b>InComplete</b></td>
                    }
  
-                  <td>June,2024</td>
+                  <td>Feb,2024</td>
                 </tr>
               ))}
           </tbody>

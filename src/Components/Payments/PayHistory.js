@@ -15,7 +15,7 @@ const PayHistory = () => {
       setHistory(res.data);
       console.log(res.data);
 
-     })
+     }).catch((error) => console.log(error));
    }
     return (
         <div>
@@ -52,7 +52,7 @@ const PayHistory = () => {
       <td>{task.name}</td>
       <td>{task.price}</td>
      
-      <td>June,2024</td>
+      <td>Feb,2024</td>
     
     </tr>
     )

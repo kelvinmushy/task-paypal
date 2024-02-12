@@ -17,7 +17,7 @@ import {Form,InputGroup} from 'react-bootstrap';
         setTasks(res.data);
         console.log(res.data);
   
-       })
+       }).catch((error) => console.log(error));
      }
   
 

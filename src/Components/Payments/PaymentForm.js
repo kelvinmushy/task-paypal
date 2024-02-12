@@ -13,9 +13,13 @@ const PaymentFrom = () => {
     const [inputs,setInputs]=useState({});
     const {id}=useParams();   
   
-    const amount=inputs.price;
+    //const amount=inputs.price;
+   
+    
     useEffect(()=>{
+
       fetchTask();
+      
     },[]);
     
     
@@ -25,7 +29,8 @@ const PaymentFrom = () => {
         setInputs({
           name:res.data.data.name,
           price:res.data.data.price,
-          id:res.data.data.id
+          id:res.data.data.id,
+          
         });
         
       });
@@ -56,7 +61,7 @@ const PaymentFrom = () => {
                   <CardFooter>
                   
                   <PayPalScriptProvider options={initialOptions}>
-                     <PaypalCheckoutButton  amount={amount}
+                     <PaypalCheckoutButton  amount={inputs.price}
                     />
                  </PayPalScriptProvider>
 

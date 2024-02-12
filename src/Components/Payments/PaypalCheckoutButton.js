@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import http from "../Https/http";
 import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import {useNavigate} from "react-router-dom";
 const PaypalCheckoutButton = props => {
 
+  
+
     const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
-    
+
+      
     const [currency, setCurrency] = useState(options.currency);
     const vavigate=useNavigate();
     const onCurrencyChange = ({ target: { value } }) => {
@@ -19,13 +22,12 @@ const PaypalCheckoutButton = props => {
             },
         });
        }
-
     const onCreateOrder = (data,actions) => {
         return actions.order.create({
             purchase_units: [
                 {
                     amount: {
-                        value:2,
+                        value:20
                     },
                 },
             ],

@@ -1,7 +1,6 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import AuthUser from './AuthUser';
 
-import http from "./Https/http";
 
 export default function Login() {
     const {http,setToken} = AuthUser();
@@ -17,6 +16,7 @@ export default function Login() {
         })
     }
 
+   
     return(
         <div className="row justify-content-center pt-5">
             <div className="col-sm-6">
