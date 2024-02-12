@@ -6,9 +6,18 @@ use App\Http\Controllers\Controller;
 use App\Models\Task;
 use App\Models\TaskPayment;
 use Illuminate\Http\Request;
+use JWTAuth;
+use Tymon\JWTAuth\Exceptions\JWTException;
 use DB;
 class PaymentHistory extends Controller
 {
+
+    protected $user;
+ 
+    public function __construct()
+    {
+        $this->user = JWTAuth::parseToken()->authenticate();
+    }
    
     public function updatePaymentStatus(){
 
@@ -29,7 +38,8 @@ class PaymentHistory extends Controller
 
     public function paymentHistory(){
 
-        $task_list = Task::with('user')
+        $task_list =Task::with('payment')
+        ->where('user_id',$this->user->id)
         ->latest()->get();
 
         return response()->json($task_list);

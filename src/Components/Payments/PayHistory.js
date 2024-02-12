@@ -6,6 +6,12 @@ import http from "../Https/http";
 
 const PayHistory = () => {
   const [dataHistory,setHistory]=useState([]);
+  const formatter = new Intl.DateTimeFormat("en-GB", {
+    year: "numeric",
+    month: "long",
+    day: "2-digit"
+  });
+
   useEffect(()=>{
     paymentHistory();
    },[]);
@@ -49,10 +55,9 @@ const PayHistory = () => {
       dataHistory.map((task,index)=>
       <tr key={task.id}>
        <td>{index+1}</td>
-      <td>{task.task.name}</td>
-      <td>{task.task.price}</td>
-     
-      <td>Feb,2024</td>
+      <td>{task.name}</td>
+      <td>${task.price}</td>
+      <td>{formatter.format(Date.parse(task.payment.created_at))}</td>
     
     </tr>
     )

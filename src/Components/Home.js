@@ -8,6 +8,11 @@ import {Form,InputGroup} from 'react-bootstrap';
   const Home = () => {
     const [dataTask,setTasks]=useState([]);
     const [search, setSearch] = useState('');
+    const formatter = new Intl.DateTimeFormat("en-GB", {
+      year: "numeric",
+      month: "long",
+      day: "2-digit"
+    });
     useEffect(()=>{
       fetchAllTask();
      },[]);
@@ -60,6 +65,7 @@ import {Form,InputGroup} from 'react-bootstrap';
                     }
           
                    </p>
+                   <small>{formatter.format(Date.parse(item.created_at))}</small>
                  </CardBody>
                 </Card>  
                   </Col>

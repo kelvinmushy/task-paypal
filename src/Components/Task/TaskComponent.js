@@ -13,6 +13,12 @@ const TaskComponent = () => {
 
   const [dataTask,setTasks]=useState([]);
   const [search, setSearch] = useState('');
+  const formatter = new Intl.DateTimeFormat("en-GB", {
+    year: "numeric",
+    month: "long",
+    day: "2-digit"
+  });
+
   useEffect(()=>{
     fetchAllTask();
    },[]);
@@ -86,12 +92,12 @@ const TaskComponent = () => {
                 <tr key={index}>
                  <td>{index+1}</td>
                  <td>{item.name}</td>
-                <td>{item.price}</td>
+                <td>${item.price}</td>
                  {item.status==1?<td className="text-success"><b>Completed</b></td>:
                  <td className="text-danger"><b>InComplete</b></td>
                    }
  
-                  <td>Feb,2024</td>
+               <td>{formatter.format(Date.parse(item.created_at))}</td>
                 </tr>
               ))}
           </tbody>
