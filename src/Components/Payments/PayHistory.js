@@ -49,8 +49,8 @@ const PayHistory = () => {
       dataHistory.map((task,index)=>
       <tr key={task.id}>
        <td>{index+1}</td>
-      <td>{task.name}</td>
-      <td>{task.price}</td>
+      <td>{task.task.name}</td>
+      <td>{task.task.price}</td>
      
       <td>Feb,2024</td>
     

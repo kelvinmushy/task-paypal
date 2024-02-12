@@ -35,7 +35,7 @@ const NewTaskForm = () => {
            }
         
             setValidated(true);
-                 
+            
             if(validated==true){
                 http.post('/add',inputs).then((res)=>{
                 const id=res.data.task_id;
