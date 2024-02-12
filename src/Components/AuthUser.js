@@ -33,6 +33,7 @@ export default function AuthUser(){
 
     const logout = () => {
         sessionStorage.clear();
+        localStorage.removeItem('token')
         navigate('/login');
     }
 
