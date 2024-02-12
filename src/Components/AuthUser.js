@@ -36,13 +36,15 @@ export default function AuthUser(){
         navigate('/login');
     }
 
-    const http = axios.create({
+    const http= axios.create({
         baseURL:"http://localhost:8000/api",
         headers:{
             "Content-type" : "application/json",
             "Authorization" : `Bearer ${token}`
         }
     });
+
+
     return {
         setToken:saveToken,
         token,
