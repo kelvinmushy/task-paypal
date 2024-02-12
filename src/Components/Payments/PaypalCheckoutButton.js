@@ -39,7 +39,7 @@ const PaypalCheckoutButton = props => {
 
             http.get('/update/status').then((res)=>{
 
-                vavigate('/');
+                vavigate('/home');
 
               });
 

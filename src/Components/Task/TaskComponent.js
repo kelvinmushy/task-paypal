@@ -4,7 +4,9 @@ import Table from 'react-bootstrap/Table';
 import Card from 'react-bootstrap/Card';
 import {Form,InputGroup, CardBody, Col ,Button,Row, CardHeader} from 'react-bootstrap';
 import { Outlet, Link } from "react-router-dom";
-import NavComponent from "../Layouts/NavComponent";
+
+// import NavComponent from "../Layouts/NavComponent";
+
 
 const TaskComponent = () => {
 
@@ -25,7 +27,7 @@ const TaskComponent = () => {
 
   return (
     <div>
-        <NavComponent/>
+        {/* <NavComponent/> */}
    
     <div className='TaskContent'>
     
