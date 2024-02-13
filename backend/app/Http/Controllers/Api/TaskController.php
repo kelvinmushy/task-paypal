@@ -136,4 +136,8 @@ class TaskController extends Controller
         return response()->json(['message'=>"deleted"]);
     }
     
+    public function latestOrder(){
+        $latest= DB::table('tasks')->where('status',0)->latest()->first();
+        return response()->json($latest);
+    }
 }

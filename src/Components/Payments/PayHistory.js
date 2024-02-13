@@ -57,7 +57,7 @@ const PayHistory = () => {
        <td>{index+1}</td>
       <td>{task.name}</td>
       <td>${task.price}</td>
-      <td>{formatter.format(Date.parse(task.payment.created_at))}</td>
+      <td>{formatter.format(Date.parse(task.created_at))}</td>
     
     </tr>
     )

@@ -48,4 +48,8 @@ Route::group(['middleware' => ['jwt.verify']], function() {
    //retrive Paymenthistory
    Route::get('task/payment/history',[PaymentHistory::class,'paymentHistory']);
 
+   //Retrive Latest Order
+   Route::get('task/order',[TaskController::class,'latestOrder']);
+   
+
 });

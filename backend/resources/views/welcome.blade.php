@@ -12,11 +12,10 @@
 
         <!-- Styles -->
         <style>
-            .center {
-            text-align: center;
-            margirn :auto;
-              }
-
+       .center {
+        text-align: center;
+        margirn :auto;
+        }
         </style>
     </head>
     <body class="antialiased">

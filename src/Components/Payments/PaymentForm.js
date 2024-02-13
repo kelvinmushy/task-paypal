@@ -12,7 +12,7 @@ const PaymentFrom = () => {
   
     const [inputs,setInputs]=useState({});
     const {id}=useParams();   
-  
+    
     //const amount=inputs.price;
    
     
@@ -61,7 +61,7 @@ const PaymentFrom = () => {
                   <CardFooter>
                   
                   <PayPalScriptProvider options={initialOptions}>
-                     <PaypalCheckoutButton  amount={inputs.price}
+                     <PaypalCheckoutButton 
                     />
                  </PayPalScriptProvider>
 
